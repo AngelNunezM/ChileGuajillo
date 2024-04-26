@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth:sanctum']], function (){
 
     //Route para obtener todos los perfiles
     Route::get('/profile', [ApiProfileController::class,'Index']);
-    
+
     //Route Eliminar un perfil ya existente
     Route::delete('/profile/{id}', [ApiProfileController::class,'destroy']);
 
@@ -35,3 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::put('/profile/{id}', [ApiProfileController::class,'edit']);
 });
 
+
+    
+
+    

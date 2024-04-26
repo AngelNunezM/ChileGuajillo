@@ -22,10 +22,12 @@ return new class extends Migration
 
             $table->unsignedBigInteger('clasification_id');
             $table->unsignedBigInteger('director_id');
+            $table->unsignedBigInteger('user_id');
 
            // $table->foreign('clasification_id')->references('id')->on('clasifications')->onDelete('cascade');
             $table->foreign('director_id')->references('id')->on('directors')->onDelete('cascade');
             $table->foreign('clasification_id')->references('id')->on('clasifications')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('profile_id');
             $table->unsignedBigInteger('movie_id');
+            
 
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
             $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
