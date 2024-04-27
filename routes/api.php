@@ -23,7 +23,10 @@ Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::get('/user-profile',[AuthController::class, 'GetUserProfile']);
 
     //Route para obtener todos los perfiles
-    Route::get('/profile', [ApiProfileController::class,'Index']);
+    Route::get('/profile', [ApiProfileController::class,'index']);
+
+    //Route para obtener todos los perfiles
+    Route::get('/profile/{id}', [ApiProfileController::class,'show']);
 
     //Route Eliminar un perfil ya existente
     Route::delete('/profile/{id}', [ApiProfileController::class,'destroy']);

@@ -11,8 +11,17 @@ use Illuminate\Support\Facades\Http;
 
 class ProfileController extends Controller
 {
-    public function Index(){
+    public function index(){
         $profiles = Profile::all();
+        return response([ "data" => $profiles], Response::HTTP_OK);
+    }
+
+    public function show($id){
+        $profiles = Profile::find($id);
+
+        if(!$profiles){
+            return response([ "message" => "usuario no encontrado"], Response::HTTP_NOT_FOUND);
+        }
         return response([ "data" => $profiles], Response::HTTP_OK);
     }
 
@@ -46,8 +55,7 @@ class ProfileController extends Controller
         $profile = Profile::find($id);
 
         if(!$profile){
-            $data = ["message" => "Perfil no econtrado"];
-            return response($data, Response::HTTP_NOT_FOUND);
+            return response(["message" => "Perfil no econtrado"], Response::HTTP_NOT_FOUND);
         }
 
         if($request->photo == "" && $request->sex == "" && $request->birthdate ==""){
@@ -70,8 +78,7 @@ class ProfileController extends Controller
         $profile = Profile::find($id);
 
         if(!$profile){
-            $data = ["message" => "Perfil no econtrado"];
-            return response($data, Response::HTTP_NOT_FOUND);
+            return response(["message" => "Perfil no econtrado"], Response::HTTP_NOT_FOUND);
         }
 
         $profile->delete();
