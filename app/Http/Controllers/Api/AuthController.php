@@ -44,7 +44,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)){
             $user = Auth::user();
             $token = $user->createToken('token')->plainTextToken;
-            return response(["token" => $token], Response::HTTP_OK);
+            return response(["token" => $token, "user" => $user], Response::HTTP_OK);
         }
         else{
             return response(["message","Crenciales invalidas"],Response::HTTP_UNAUTHORIZED);
