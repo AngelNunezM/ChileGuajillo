@@ -59,7 +59,7 @@ class ProfileController extends Controller
         }
 
         if($request->photo == "" && $request->sex == "" && $request->birthdate ==""){
-            return response($message = "No hubo nada que actualizar", Response::HTTP_OK);
+            return response(["message" => "No hubo nada que actualizar"], Response::HTTP_OK);
         }
         if($request->photo){
            $profile->photo = $request->photo;
@@ -71,7 +71,7 @@ class ProfileController extends Controller
             $profile->birthdate = $request->birthdate;
          }
          $profile->save();
-        return response($profile, Response::HTTP_OK);
+        return response(["data" => $profile], Response::HTTP_OK);
     }
 
     public function destroy($id){
@@ -82,6 +82,6 @@ class ProfileController extends Controller
         }
 
         $profile->delete();
-        return response($message = "Perfil Eliminado Exitosamente", Response::HTTP_OK);
+        return response(["message" => "Perfil Eliminado Exitosamente"], Response::HTTP_OK);
     }
 }
